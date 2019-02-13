@@ -42,7 +42,7 @@ $(function() {
                 var regexQuery = "^(http?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
                 var url = new RegExp(regexQuery,"i");
                 expect(url.test(feed.url)).toBe(true);
-                console.log(typeof feed.url);
+                // console.log(typeof feed.url);
             });
         });
 
@@ -62,18 +62,29 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
-
+    describe('The menu', function () {
+        const body = document.querySelector('body');
+        const menu = document.querySelector('.menu-icon-link');
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-
+        it('hidden by default', function(){
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+        });
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        it('toggles hide and show', function () {
+            // clicks the menu icon pragmaticaly
+            menu.click();
+            // check if menu-hidden is not within the classList
+            expect(body.classList.contains('menu-hidden')).toBe(false);
+        })
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
