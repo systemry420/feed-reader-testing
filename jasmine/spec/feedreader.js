@@ -87,18 +87,49 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
-
+    describe('Initial Entries', function () {
         /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        * function is called and completes its work, there is at least
+        * a single .entry element within the .feed container.
+        * Remember, loadFeed() is asynchronous so this test will require
+        * the use of Jasmine's beforeEach and asynchronous done() function.
+        */
+
+        // async loading
+        beforeEach(function(done){
+            loadFeed(0, done);
+        });
+
+        // checks for any entries
+        it('loads and complete at least 1 entry', function () {
+            const feed = document.querySelector('.feed');
+            expect(feed.children.length > 0).toBe(true);
+        });
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    describe('New Feed Selection', function () {
+        const feed = document.querySelector('.feed');
+        const arrFeed = [];
+        beforeEach(function(done){
+            // load the first feed and save its children into array
+            loadFeed(0);
+            Array.from(feed.children).forEach(entry =>{
+                arrFeed.push(entry.textContent);
+            });
+            // load the 2nd feed and finish
+            loadFeed(1, done);
+        });
         /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+        * by the loadFeed function that the content actually changes.
+        * Remember, loadFeed() is asynchronous.
+        */
+        it('loads a new feed with different entries',  function () {
+            // check the in-equality of children of feed0 and feed1
+            Array.from(feed.children).forEach( (entry, i) => {
+                expect(entry.textContent === arrFeed[i]).toBe
+                (false);
+            });
+        })
+    });
 }());
