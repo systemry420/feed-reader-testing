@@ -18,3 +18,10 @@ Using [Jasmine](http://jasmine.github.io/) testing framework to apply tests to a
 - New Feed Selection
     - loads feed0, collects its entries, then loads feed1.
     - next, if checks the inequality of each feed's content.
+
+### You're welcomed to use this repository
+    - By downloading it as a zip file.
+    - Or by running this command to ure terminal:
+        ```
+        $ git clone https://github.com/mikejoyceio/arcade-game
+        ```
