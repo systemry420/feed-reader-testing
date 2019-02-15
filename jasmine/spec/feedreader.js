@@ -57,24 +57,24 @@ $(function() {
             loadFeed(0, done);
         });
 
-        // checks for feed has child nodes with .entry-link
+        // checks if feed has child nodes with .entry descendant
         it('loads and complete at least 1 entry', function () {
-            const feed = document.querySelector('.feed');
-            expect(feed.hasChildNodes('.entry-link')).toBe(true);
-            // console.log(feed.hasChildNodes('.entry'));
+            var entries = $(".entry");
+            expect(entries.length).toBeGreaterThan(0);
+            // console.log(entries.length);
         });
     });
 
     /* test suite named "New Feed Selection" */
     describe('New Feed Selection', function () {
-        const feed = document.querySelector('.feed');
-        const arrFeed = [];
+        var feed = document.querySelector('.feed');
+        var txt0, txt1;
         beforeEach(function(done){
             // load the first feed and save its children into array
             loadFeed(0, function () {
-                Array.from(feed.children).forEach(entry =>{
-                    arrFeed.push(entry.textContent);
-                });
+                txt0 = feed.textContent;   //storing the content
+                // console.log(feed0.trim().substr(0,20));
+
                 // load the 2nd feed and finish
                 loadFeed(1, done);
             });
@@ -82,9 +82,9 @@ $(function() {
 
         it('loads a new feed with different entries',  function () {
             // check the in-equality of children of feed0 and feed1
-            Array.from(feed.children).forEach( (entry, i) => {
-                expect(entry.textContent === arrFeed[i]).toBe(false);
-            });
+            txt1 = feed.textContent;
+            // console.log(feed1.trim().substr(0,20));
+            expect(txt0 == txt1).toBe(false);
         });
     });
 }());

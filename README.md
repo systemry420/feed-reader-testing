@@ -20,8 +20,7 @@ Using [Jasmine](http://jasmine.github.io/) testing framework to apply tests to a
     - next, if checks the inequality of each feed's content.
 
 ### You're welcomed to use this repository
-    - By downloading it as a zip file.
-    - Or by running this command to ure terminal:
-        ```
-        $ git clone https://github.com/mikejoyceio/arcade-game
-        ```
+- By downloading it as a zip file.
+- Or by running this command into your terminal:
+`$ git clone https://github.com/systemry420/feed-reader-testing.git`
+- After that you simply open index.html file to run the app.
